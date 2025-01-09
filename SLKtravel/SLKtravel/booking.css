@@ -1,0 +1,296 @@
+/* Reset some basic styles */
+body, h1, p, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100vh;
+    overflow-y: auto; /* Allow vertical scrolling */
+    position: relative;
+}
+
+/* Blurred background styling */
+.background-blur {
+    position: fixed; /* Fix the background image */
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: url('image/alpha.jpeg') no-repeat center center/cover;
+    filter: blur(3px);
+    transform: translate(-50%, -50%);
+    border-radius: 15px; /* Adds radius to the background image */
+    z-index: -1;
+}
+
+/* Container for the content */
+.content-container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    min-height: 100vh; /* Ensure content container takes full height */
+    padding-top: 60px; /* Adjust padding to accommodate fixed navbar */
+}
+
+/* Navbar styling */
+.navbar {
+    height: 50px; /* Adjusted height for better visibility */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #000; /* Changed background color to black */
+    padding: 10px 20px;
+    color: #fff; /* Changed text color to white */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added a subtle shadow */
+    position: fixed; /* Fix the navbar at the top */
+    width: 100%;
+    z-index: 1000;
+    margin-bottom: 850px;
+}
+
+.logo img {
+    height: 40px; /* Adjusted logo height */
+}
+
+/* Navigation links styling */
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    color: #fff; /* Changed text color to white */
+    text-decoration: none;
+    font-size: 16px;
+    padding: 5px 10px; /* Add some padding to make the shadow effect more noticeable */
+    border-radius: 5px; /* Add border radius to soften the corners */
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition */
+}
+
+.nav-links a:hover {
+    background-color: #fafafa; /* Slight background color change on hover */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4); /* Add shadow effect */
+    color: #000;
+}
+
+/* Content styling */
+.content {
+    text-align: center;
+    padding: 50px 20px;
+    color: white;
+    margin-top: 100px;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Shadow effect */
+    max-width: 600px; /* Maximum width for the content box */
+    margin: 100px auto; /* Center the content box */
+}
+
+.content h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 18px;
+}
+
+/* Gallery styling */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #fff; /* White background for the gallery container */
+    padding: 20px;
+    border-radius: 10px; /* Rounded corners for the gallery container */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Shadow effect */
+    margin-top: 20px; /* Space above the gallery */
+}
+
+.image-container {
+    margin: 10px;
+    width: 200px;
+    background-color: #fff; /* White background for individual image containers */
+    padding: 10px;
+    border-radius: 10px; /* Rounded corners for individual image containers */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    text-align: center; /* Center-align text in the image container */
+}
+
+.place-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.stars {
+    color: #FFD700; 
+}
+
+/* Title styling */
+.gallery-title {
+    text-align: center;
+    font-size: 10px;
+    margin-top: 50px;
+    color: #000;
+    background-color: rgba(250, 249, 249, 0.7); /* Semi-transparent background */
+    padding: 2px;
+    border-radius: 10px;
+    max-width: 1300px;
+    max-height: 35px;
+    margin: 35px auto; /* Center the title */
+}
+
+/* Footer styling */
+.footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    position: absolute; /* Positioned at the bottom */
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
+/* Container for the table */
+.table-container {
+    background-color: #ffce8b;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 80%; /* Adjust max width */
+    width: 600px; /* Set fixed width */
+    margin: auto; /* Center the container */
+}
+
+#booking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#booking-table th, #booking-table td {
+    border: 1px solid #ddd;
+    padding: 18px;
+    text-align: left;
+    color: #000; /* Set text color to black */
+}
+
+#booking-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+#total-price {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: right;
+    color: #000; /* Set text color to black */
+}
+
+#pay-button {
+    display: block;
+    margin: 20px 0 0 auto; /* Align the pay button to the right and below the total price */
+}
+
+.delete-btn {
+    padding: 5px 10px;
+    background-color: #230902;;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.delete-btn:hover {
+    background-color: #552E10;
+}
+
+.pay-btn {
+    background-color: #552E10;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.pay-btn:hover {
+    background-color: #230902;
+}
+
+.payment-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.payment-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #0e0b0b;
+}
+
+.payment-container form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.payment-container form input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.payment-container form button {
+    background-color: #552E10;
+    color: rgb(7, 7, 7);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.payment-container form button:hover {
+    background-color: #230902;
+    color: #ccc;
+}
+
+.payment-container .close-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.payment-container .close-btn:hover {
+    background-color: #c82333;
+}

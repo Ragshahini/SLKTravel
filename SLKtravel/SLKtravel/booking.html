@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLKTravel - Booking</title>
+    <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+    <div class="background-blur"></div>
+    <div class="content-container">
+        <nav class="navbar">
+            <div class="logo">
+                <img src="image/travel_logo-removebg-preview.png" alt="SLKTravel Logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <h1>Your Booked Places</h1>
+            <div class="table-container">
+                <table id="booking-table">
+                    <thead>
+                        <tr>
+                            <th>Place</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="booking-list">
+                        <!-- Booked places will be injected here by JavaScript -->
+                    </tbody>
+                </table>
+                <div id="total-price"></div>
+                <button id="pay-button" style="display:none;" class="pay-btn">Pay</button>
+            </div>
+            <div id="payment-container" class="payment-container">
+                <h2>Payment Details</h2>
+                <form>
+                    <label for="card-number">Card Number:</label>
+                    <input type="text" id="card-number" name="card-number" required>
+                    <label for="expiry-date">Expiry Date:</label>
+                    <input type="text" id="expiry-date" name="expiry-date" required>
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" required>
+                    <button type="submit">Submit Payment</button>
+                </form>
+                <button class="close-btn">Cancel</button>
+            </div>
+        </div>
+        <footer class="footer">
+            <p>© 2024 SLKTravel. All rights reserved.</p>
+            <a href="https://www.instagram.com/yourinstagramid" target="_blank">Instagram</a> |
+            <a href="https://www.facebook.com/yourfacebookid" target="_blank">Facebook</a>           
+            <p>Email: <a href="mailto:info@slktravel.com">info@slktravel.com</a></p> 
+            <p>Contact: +123-456-7890</p> 
+            <p>Address: 123 Travel St, Colombo, Sri Lanka</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const bookingList = document.getElementById('booking-list');
+            const totalPriceElement = document.getElementById('total-price');
+            const payButton = document.getElementById('pay-button');
+            const paymentContainer = document.getElementById('payment-container');
+            const closeBtn = document.querySelector('.close-btn');
+            
+            function updateTotalPrice(bookings) {
+                let totalPrice = 0;
+                bookings.forEach(booking => {
+                    totalPrice += parseFloat(booking.price);
+                });
+                totalPriceElement.innerHTML = `<h2>Total Price: $${totalPrice.toFixed(2)}</h2>`;
+                
+                // Show or hide the pay button based on the total price
+                if (totalPrice > 0) {
+                    payButton.style.display = 'block';
+                } else {
+                    payButton.style.display = 'none';
+                }
+            }
+
+            function renderBookings() {
+                let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+                bookingList.innerHTML = '';
+
+                if (bookings.length > 0) {
+                    bookings.forEach((booking, index) => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${booking.place}</td>
+                            <td>$${booking.price}</td>
+                            <td><button class="delete-btn">Delete</button></td>
+                        `;
+                        bookingList.appendChild(row);
+                    });
+                    updateTotalPrice(bookings);
+                } else {
+                    const row = document.createElement('tr');
+                    row.innerHTML = '<td colspan="3">No places booked yet.</td>';
+                    bookingList.appendChild(row);
+                    totalPriceElement.innerHTML = '';
+                }
+
+                // Add event listeners to delete buttons
+                document.querySelectorAll('.delete-btn').forEach((button, index) => {
+                    button.addEventListener('click', () => {
+                        let bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+                        bookings.splice(index, 1);
+                        localStorage.setItem('bookings', JSON.stringify(bookings));
+                        renderBookings();
+                    });
+                });
+            }
+
+            // Show payment container on clicking the pay button
+            payButton.addEventListener('click', () => {
+                paymentContainer.style.display = 'block';
+            });
+
+            // Hide payment container on clicking the cancel button
+            closeBtn.addEventListener('click', () => {
+                paymentContainer.style.display = 'none';
+            });
+
+            renderBookings();
+        });
+    </script>
+</body>
+</html>

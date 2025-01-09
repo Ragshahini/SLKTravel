@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLKTravel - Contact Us</title>
+    <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="image/travel_logo-removebg-preview.png" alt="SLKTravel Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <p><strong>Phone Number:</strong> 077 456 7890</p>
+            <p><strong>Address:</strong> 123 Travel Road, Kollupity, Colombo 06</p>
+            <p><strong>Email:</strong> slktravel@gmail.com</p>
+        </div>
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+        <p class="success-message" id="successMessage"></p>
+    </div>
+    <script >
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const successMessage = document.getElementById('successMessage');
+    successMessage.textContent = 'Your message has been sent successfully!';
+    successMessage.style.display = 'block';
+
+    // Clear the form
+    document.getElementById('contactForm').reset();
+
+    // Hide the message after 3 seconds
+    setTimeout(() => {
+        successMessage.style.display = 'none';
+    }, 3000);
+});
+
+    </script>
+</body>
+</html>
